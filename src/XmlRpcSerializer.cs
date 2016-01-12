@@ -1839,8 +1839,16 @@ namespace CookComputing.XmlRpc
         }
         catch (Exception)
         {
-          // use exception from when attempting to parse code as integer
-          throw ex;
+	      try{
+			faultStrCode = (FaultStructStringCode)ParseValue(structNode,
+			  typeof(FaultStructStringCode), parseStack, mappingAction);
+			fault.faultCode = 32500;
+			fault.faultString = faultStrCode.faultCode;
+		  }
+		  catch (Exception){
+				// use exception from when attempting to parse code as integer
+				throw ex;
+		  }
         }
       }
       return new XmlRpcFaultException(fault.faultCode, fault.faultString);

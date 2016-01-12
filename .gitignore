@@ -1,0 +1,13 @@
+lib/
+include/
+/data/
+bin/
+.idea
+upgrade.py
+*.log
+atlassian-ide-plugin.xml
+*~
+devel_*
+*.userprefs
+*.resources
+*.db
